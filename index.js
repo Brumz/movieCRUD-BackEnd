@@ -33,3 +33,13 @@ app.post('/movies', (req, res) => {
         res.status(201).send(movie)
     })
 })
+app.put('/movies/:id', (req, res) => {
+    queries.updateMovie(req.params.id, req.body).then(movie => {
+        res.status(200).send(movie[0])
+    })
+})
+app.delete('/movies/:id', (req, res) => {
+    queries.deleteMovie(req.params.id).then(movie => {
+        res.sendStatus(204)
+    })
+})
