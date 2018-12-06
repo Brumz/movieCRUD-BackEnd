@@ -27,3 +27,9 @@ app.get('/movies/:id', (req, res) => {
         res.send(movie)
     })
 })
+
+app.post('/movies', (req, res) => {
+    queries.createMovie(req.body).then(movie => {
+        res.status(201).send(movie)
+    })
+})
