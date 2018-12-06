@@ -21,3 +21,9 @@ app.get('/movies', (req, res) => {
         res.send(movies)
     })
 })
+
+app.get('/movies/:id', (req, res) => {
+    queries.listMovieById(req.params.id).then(movie => {
+        res.send(movie)
+    })
+})
