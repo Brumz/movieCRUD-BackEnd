@@ -16,6 +16,4 @@ module.exports = {
     deleteMovie(id) {
         return db('movies').where('id', id).del()
     }
-
-
 }

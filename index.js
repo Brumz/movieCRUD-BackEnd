@@ -10,12 +10,6 @@ app.use(bodyParser.urlencoded({
     extended: true
 }))
 app.use(cors())
-
-
-app.listen(port, () => {
-    console.log('listening on port:', port)
-})
-
 app.get('/movies', (req, res) => {
     queries.listAllMovies().then(movies => {
         res.send(movies)
@@ -27,7 +21,6 @@ app.get('/movies/:id', (req, res) => {
         res.send(movie)
     })
 })
-
 app.post('/movies', (req, res) => {
     queries.createMovie(req.body).then(movie => {
         res.status(201).send(movie)
@@ -42,4 +35,7 @@ app.delete('/movies/:id', (req, res) => {
     queries.deleteMovie(req.params.id).then(movie => {
         res.sendStatus(204)
     })
+})
+app.listen(port, () => {
+    console.log('listening on port:', port)
 })
